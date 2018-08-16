@@ -1,0 +1,45 @@
+extends layout
+
+block content
+ h1= title
+ p Welcome to #{title}
+ br
+ span(style='color:red;font-weight:bold') #{error}
+ br
+ p Login
+ form(method='POST', action='/users/login')
+  input(type='number', name='mobile', placeholder="Mobile",required)
+  br
+  input(type='email', name='email',placeholder = "Email",required)
+  br
+  br
+  button(type='submit') Login
+ br
+ br
+ br 
+ a(href="users/register") Registration
+ script(type='text/javascript').
+  window.addEventListener( "pageshow", function ( event ) {
+  var historyTraversal = event.persisted || 
+                         ( typeof window.performance != "undefined" && 
+                              window.performance.navigation.type === 2 );
+  if ( historyTraversal ) {
+    // Handle page restore.
+    window.location.reload();
+  }
+  });
+
+
+  
+  
+ 
+ 
+
+ 
+ 
+  
+ 
+
+
+  
+

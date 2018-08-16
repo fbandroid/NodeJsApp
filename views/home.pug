@@ -1,0 +1,20 @@
+block content
+ p Welcome to MyHome  
+ a(href="/home/logout" onclick='goback()') LogOut
+ br
+ p #{name}
+ form( method='POST' action='/home/upload' encType="multipart/form-data")
+   input(type='file', name='pic', accept='image/*' multiple)
+   input(type='submit')
+ script(type='text/javascript').
+  window.addEventListener( "pageshow", function ( event ) {
+  var historyTraversal = event.persisted || 
+                         ( typeof window.performance != "undefined" && 
+                              window.performance.navigation.type === 2 );
+  if ( historyTraversal ) {
+    // Handle page restore.
+    window.location.reload();
+  }
+  });
+  
+ 
