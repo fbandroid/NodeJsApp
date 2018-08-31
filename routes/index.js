@@ -4,13 +4,13 @@ var session = require('express-session');
 var jwt = require('jsonwebtoken');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/',function(req, res, next) {
 
        if(req.session.user == undefined && req.session.error !== undefined){
-         res.render('index',{title:"Express",error:"Invalid Credential"});
+         res.render('index',{title:"NodeJS",error:"Invalid Credential"});
        }
        else{
-         res.render('index',{ title:"Express" });
+         res.render('index',{ title:"NodeJS" });
          
        }
        
