@@ -1,3 +1,5 @@
+
+
 block content
  p Welcome to MyHome  
  a(href="/home/logout" onclick='goback()') LogOut
@@ -6,7 +8,21 @@ block content
  form( method='POST' action='/home/upload' encType="multipart/form-data")
    input(type='file', name='pic', accept='image/*' multiple)
    input(type='submit')
- script(type='text/javascript').
+<br/>
+<br/>   
+Incoming Chat: <ul id="incomingChatMessages"></ul>
+<br />
+<input type="text" id="outgoingChatMessage"> 
+ link(rel='stylesheet', href='/stylesheets/style.css')
+ script(src='http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js')
+ script(src='https://code.jquery.com/ui/1.12.1/jquery-ui.js')
+ script(src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.1.1/socket.io.js")
+ script.
+    var socket = io()
+    socket.emit('hello', { my: 'dk madarchod' });
+    
+
+ script.
   window.addEventListener( "pageshow", function ( event ) {
   var historyTraversal = event.persisted || 
                          ( typeof window.performance != "undefined" && 

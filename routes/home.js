@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var session = require('express-session');
 var jwt = require('jsonwebtoken');
+var io = require('socket.io');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -11,8 +12,7 @@ router.get('/', function (req, res, next) {
         res.sendStatus(401)
     }
     else {
-
-        res.render('home', { name: JSON.parse(JSON.stringify(req.session.user)).email });
+ res.render('home', { name: JSON.parse(JSON.stringify(req.session.user)).email });
     }
 }
 

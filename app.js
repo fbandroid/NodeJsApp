@@ -6,12 +6,22 @@ var bodyParsor = require('body-parser');
 var logger = require('morgan');
 var session = require('express-session');
 var fileUpload = require('express-fileupload');
-
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var homerouter = require('./routes/home');
+var io = require('./io');
+//var io = require('socket.io-client');
+// or with import syntax
 
 var app = express();
+
+
+var port = process.env.PORT || 3000;
+
+
+
+
+
 app.use(session({
    secret : 'admin',
    resave : true,
@@ -59,3 +69,4 @@ app.use(function(err, req, res, next) {
 });
 
 module.exports = app;
+
