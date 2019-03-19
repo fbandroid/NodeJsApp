@@ -3,7 +3,7 @@ var router = express.Router();
 var session = require('express-session');
 var jwt = require('jsonwebtoken');
 var io = require('socket.io');
-
+var thisFile ;
 /* GET home page. */
 router.get('/', function (req, res, next) {
 
@@ -27,11 +27,12 @@ router.get('/logout', function (req, res) {
 });
 
 router.post('/upload', function (req, res) {
-    if (!req.files)
+   // console.log(req.files)
+    if (!req.files.pic || !req.files.pic.name)
         return res.status(400).send('No files were uploaded.');
 
     // The name of the input field (i.e. "sampleFile") is used to retrieve the uploaded file
-    let sampleFile = req.files.pic;
+    let sampleFile = req.files;
 
     // sampleFile.forEach(element => {
     //       // Use the mv() method to place the file somewhere on your server
@@ -46,7 +47,8 @@ router.post('/upload', function (req, res) {
 
     for (var key in sampleFile) {
         thisFile = sampleFile[key];
-        console.log(sampleFile[key].name);
+        console.log(thisFile);
+      //  console.log(sampleFile[key].name);
         thisFile.mv('public/profile/' + sampleFile[key].name, function (err) {
             if (err) {
                 console.log(err);
